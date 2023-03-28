@@ -35,6 +35,7 @@ public class EditCourseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_course);
 
+        firebaseDatabase = FirebaseDatabase.getInstance();
         courseNameEdt = findViewById(R.id.idEdtCourseName);
         coursePriceEdt = findViewById(R.id.idEdtCoursePrice);
         courseSuitedForEdt = findViewById(R.id.idEdtCourseSuitedFor);
@@ -55,8 +56,6 @@ public class EditCourseActivity extends AppCompatActivity {
             courseDescEdt.setText(courseRVModal.getCourseDescription());
             courseID = courseRVModal.getCourseID();
         }
-
-        firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference("Courses").child(courseID);
 
         updateCourseBtn.setOnClickListener(new View.OnClickListener() {
